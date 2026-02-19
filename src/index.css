@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #DDE5DE; /* 🌿 verde sálvia claro */
+  color: #2F3E34;      /* 🌿 verde sálvia escuro para texto */
+}
+
+/* grain overlay */
+.bg-grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .06;
+  mix-blend-mode: multiply;
+  background-image: url("/textures/grain.png");
+  background-size: 240px 240px;
+}
+@keyframes storymarquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-storymarquee {
+  animation: storymarquee 38s linear infinite;
+}
