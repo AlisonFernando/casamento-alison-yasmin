@@ -14,7 +14,7 @@ export default function MusicPlayer({ autoPlay }: Props) {
   const sound = useMemo(
     () =>
       new Howl({
-        src: [`${BASE}audio/luz-brilhar.mpeg`],
+        src: [`${BASE}audio/luz-brilhar.mp3`],
         loop: true,
         volume: 0,
         html5: true,
