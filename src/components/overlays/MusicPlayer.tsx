@@ -14,12 +14,12 @@ export default function MusicPlayer({ autoPlay }: Props) {
   const sound = useMemo(
     () =>
       new Howl({
-        src: [`${BASE}audio/piano-romantico.mp3`],
+        src: [`${BASE}audio/luz-brilhar.mpeg`],
         loop: true,
         volume: 0,
         html5: true,
       }),
-    []
+    [],
   );
 
   useEffect(() => {
