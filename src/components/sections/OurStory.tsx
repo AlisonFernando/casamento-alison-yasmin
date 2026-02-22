@@ -15,7 +15,7 @@ const item = {
 export default function OurStory() {
   return (
     <section className="relative overflow-hidden px-6 py-16 md:py-20">
-      {/* Textura de fundo (sutil) */}
+      {/* Textura de fundo */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 opacity-[0.10]"
@@ -28,7 +28,8 @@ export default function OurStory() {
           `,
         }}
       />
-      {/* “granulado” leve */}
+
+      {/* Granulado leve */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 opacity-[0.07] mix-blend-multiply"
@@ -47,34 +48,56 @@ export default function OurStory() {
         whileInView="show"
         viewport={{ once: true, amount: 0.25 }}
       >
-        {/* Título */}
-        <motion.h2
-          variants={item}
-          className="text-3xl md:text-4xl"
-          style={{ fontFamily: "Playfair Display, serif", color: "#7E8F6A" }} // sálvia escuro
-        >
-          Nossa história
-        </motion.h2>
-
-        {/* Linha decorativa animada */}
-        <div className="flex justify-center mt-4 mb-10">
+        {/* Título + Monograma */}
+        <div className="relative flex flex-col items-center justify-center mb-10">
+          {/* Monograma marca d’água */}
           <motion.div
-            className="h-[2px] w-28 rounded-full origin-left"
-            style={{ backgroundColor: "#B7C4A5" }} // sálvia claro
+            aria-hidden="true"
+            initial={{ opacity: 0, scale: 0.92 }}
+            whileInView={{ opacity: 0.08, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.1, ease: "easeOut" }}
+            className="absolute select-none pointer-events-none"
+            style={{
+              fontFamily: "Playfair Display, serif",
+              fontSize: "clamp(4.5rem, 10vw, 8rem)",
+              color: "#9CAF88",
+              filter: "blur(1px)",
+              lineHeight: 1,
+            }}
+          >
+            A & Y
+          </motion.div>
+
+          {/* Título */}
+          <motion.h2
+            variants={item}
+            className="relative text-3xl md:text-4xl"
+            style={{
+              fontFamily: "Playfair Display, serif",
+              color: "#7E8F6A",
+            }}
+          >
+            Nossa história
+          </motion.h2>
+
+          {/* Linha decorativa */}
+          <motion.div
+            className="mt-4 h-[2px] w-28 rounded-full origin-left"
+            style={{ backgroundColor: "#B7C4A5" }}
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
-            viewport={{ once: true, amount: 0.8 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           />
         </div>
 
-        {/* Conteúdo (fade-in no scroll) */}
+        {/* Conteúdo */}
         <motion.div
           className="mx-auto max-w-3xl text-left leading-relaxed space-y-6"
           style={{ color: "rgba(20, 20, 20, 0.78)" }}
           variants={container}
         >
-          {/* Primeiro parágrafo com “drop cap” */}
           <motion.p variants={item} className="text-lg">
             <span
               className="float-left mr-3 leading-none"
