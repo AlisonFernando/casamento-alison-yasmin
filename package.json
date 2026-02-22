@@ -13,6 +13,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "framer-motion": "^12.34.3",
     "gsap": "^3.14.2",
     "howler": "^2.2.4",
     "qrcode.react": "^4.2.0",
