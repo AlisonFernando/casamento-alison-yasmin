@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const imgs = ["g1.jpeg","g2.jpeg","g3.jpeg","g4.jpeg","g5.jpeg","g6.jpeg"];
+const imgs = ["g1.jpeg", "g2.jpeg", "g3.jpeg", "g4.jpeg", "g5.jpeg", "g6.jpeg"];
 const BASE = import.meta.env.BASE_URL;
 
 export default function Gallery() {
@@ -8,7 +8,10 @@ export default function Gallery() {
 
   return (
     <section data-animate>
-      <h2 className="text-2xl md:text-3xl" style={{ fontFamily: "Playfair Display, serif" }}>
+      <h2
+        className="text-2xl md:text-3xl"
+        style={{ fontFamily: "Playfair Display, serif" }}
+      >
         Galeria
       </h2>
 
