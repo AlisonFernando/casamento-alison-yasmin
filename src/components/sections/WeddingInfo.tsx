@@ -1,4 +1,5 @@
 import { WEDDING } from "../../app/config";
+import { buildMapsLink } from "../../app/links";
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -60,6 +61,17 @@ export default function WeddingInfo() {
                 <br />
                 <span>{WEDDING.city}</span>
               </p>
+
+              <div className="mt-5">
+                <a
+                  href={buildMapsLink()}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex rounded-full px-6 py-3 bg-serenity-100 text-ink shadow-sm hover:shadow-md transition"
+                >
+                  Ver localização
+                </a>
+              </div>
 
               <div className="mt-8 h-px w-24 bg-gold/40 mx-auto md:mx-0" />
 

@@ -1,4 +1,4 @@
-import { WEDDING } from "../../app/config";
+import { Link } from "react-router-dom";
 
 export default function GiftList() {
   return (
@@ -10,14 +10,12 @@ export default function GiftList() {
         Se desejar nos presentear, preparamos uma lista com muito carinho.
       </p>
       <div className="mt-6">
-        <a
-          href={WEDDING.giftListUrl}
-          target="_blank"
-          rel="noreferrer"
+        <Link
+          to="/presentes"
           className="inline-flex rounded-full px-6 py-3 bg-serenity-100 text-ink shadow-sm hover:shadow-md transition"
         >
           Ver lista de presentes
-        </a>
+        </Link>
       </div>
     </section>
   );

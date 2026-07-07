@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@theme {
+  --color-ink: #2F3E34;
+  --color-ink2: #6B7A6E;
+  --color-gold: #C6A769;
+  --color-serenity-100: #DCE9E2;
+  --radius-xl2: 20px;
+}
+
 html, body {
   height: 100%;
 }
