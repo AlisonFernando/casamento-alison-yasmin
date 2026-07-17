@@ -26,7 +26,7 @@ export default function StorySplit() {
                 key={`${p}-${idx}`}
                 src={`${BASE}images/gallery/${p}`}
                 alt="Foto"
-                className="h-[260px] md:h-[320px] w-[340px] md:w-[420px] object-cover"
+                className="h-[320px] md:h-[380px] w-[220px] md:w-[270px] object-cover object-top"
                 loading="lazy"
               />
             ))}

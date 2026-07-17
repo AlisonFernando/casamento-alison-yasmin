@@ -2,6 +2,7 @@ import HeroBanner from "../components/sections/HerroBanner";
 import StorySplit from "../components/sections/StorySplit";
 import Countdown from "../components/sections/Countdown";
 import WeddingInfo from "../components/sections/WeddingInfo";
+import Gallery from "../components/sections/Gallery";
 
 import GiftList from "../components/sections/GiftList";
 import DressCode from "../components/sections/DressCode";
@@ -18,6 +19,8 @@ export default function Home() {
       <div className="mx-auto max-w-[1100px] px-5">
         <div className="py-16 md:py-20 space-y-16 md:space-y-20">
           <StorySplit />
+
+          <Gallery />
 
           {/* 3) bloco verde sálvia claro: countdown */}
           <div className="rounded-xl2 bg-white/40 border border-white/40 backdrop-blur p-6 md:p-8">
