@@ -6,6 +6,7 @@ import { revealOnScroll } from "./app/motion";
 
 import MusicPlayer from "./components/overlays/MusicPlayer";
 import FloatingRSVP from "./components/overlays/FloatingRSVP";
+import ScrollToTop from "./components/overlays/ScrollToTop";
 
 import Home from "./pages/Home";
 import GiftListPage from "./pages/GiftListPage";
@@ -40,6 +41,7 @@ export default function App() {
     <>
       <MusicPlayer autoPlay />
       <FloatingRSVP />
+      <ScrollToTop />
 
       <Routes>
         <Route path="/" element={<Home />} />
