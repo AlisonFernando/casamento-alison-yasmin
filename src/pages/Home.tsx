@@ -3,7 +3,6 @@ import StorySplit from "../components/sections/StorySplit";
 import Countdown from "../components/sections/Countdown";
 import WeddingInfo from "../components/sections/WeddingInfo";
 import Gallery from "../components/sections/Gallery";
-import Godparents from "../components/sections/Godparents";
 
 import GiftList from "../components/sections/GiftList";
 import DressCode from "../components/sections/DressCode";
@@ -36,8 +35,6 @@ export default function Home() {
       {/* 5) blocos: presentes, traje, mensagem */}
       <div className="mx-auto max-w-[1100px] px-5">
         <div className="py-16 md:py-20 space-y-10">
-          <Godparents />
-
           <div className="grid gap-6 md:grid-cols-3">
             <div data-animate className="md:col-span-1">
               <GiftList />
