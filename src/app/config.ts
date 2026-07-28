@@ -1,10 +1,10 @@
 export const WEDDING = {
   couple: "Alison & Yasmin",
-  dateISO: "2027-06-12T17:00:00-03:00",
+  dateISO: "2027-06-12T10:30:00-03:00",
   dateLabel: "12 de Junho de 2027",
-  timeLabel: "17:00",
-  venue: "Chácara da Mônica Beato",
-  city: "Viradouro – SP",
+  timeLabel: "10:30",
+  venue: "R. dos Antúrios, nº 63 – Jardim Florida",
+  city: "Sales Oliveira – SP",
   whatsappPhoneE164: "5517996311022",
   verseHero: {
     text: "Assim, eles já não são dois, mas sim uma só carne. Portanto, o que Deus uniu, ninguém separe.",
