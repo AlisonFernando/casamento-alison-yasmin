@@ -6,9 +6,6 @@ type Props = {
   onEnter: () => void;
 };
 
-const [firstName, secondName] = WEDDING.couple.split("&").map((s) => s.trim());
-const initials = [firstName?.[0], secondName?.[0]].filter(Boolean);
-
 export default function Splash({ onEnter }: Props) {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const envelopeRef = useRef<HTMLButtonElement | null>(null);
@@ -45,7 +42,7 @@ export default function Splash({ onEnter }: Props) {
 
     const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
 
-    // ✅ “abre” o convite: selo dá zoom e some
+    // ✅ “abre” o convite: envelope dá zoom e some
     tl.to(envelopeRef.current, { scale: 0.98, duration: 0.12 })
       .to(envelopeRef.current, { scale: 1.04, duration: 0.22 })
       .to(envelopeRef.current, { scale: 1.18, duration: 0.35 }, 0.15)
@@ -59,71 +56,106 @@ export default function Splash({ onEnter }: Props) {
       className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden"
       style={{
         background:
-          "radial-gradient(1100px 750px at 50% 20%, #3E4A35 0%, #2A3324 65%, #1F2618 100%)",
+          "radial-gradient(1200px 800px at 50% 15%, #FBF8F1 0%, #F3ECDD 55%, #EFE7D6 100%)",
       }}
     >
+      {/* bloco verde diagonal no canto inferior direito */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-2 -right-2 h-[42%] w-[52%]"
+        style={{
+          background: "#6E7C55",
+          clipPath: "polygon(35% 100%, 100% 35%, 100% 100%)",
+        }}
+      />
+
+      {/* ramo de eucalipto no topo */}
+      <svg
+        aria-hidden="true"
+        className="pointer-events-none absolute left-0 top-0 w-full h-[170px] opacity-90"
+        viewBox="0 0 400 170"
+        fill="none"
+      >
+        <path
+          d="M-10 10C40 30 90 20 130 45C170 70 190 40 230 30"
+          stroke="#8FA37B"
+          strokeOpacity="0.6"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+        <g fill="#B7C4A5" fillOpacity="0.85">
+          <ellipse cx="20" cy="15" rx="14" ry="8" transform="rotate(-25 20 15)" />
+          <ellipse cx="48" cy="28" rx="16" ry="9" transform="rotate(-10 48 28)" />
+          <ellipse cx="80" cy="24" rx="14" ry="8" transform="rotate(15 80 24)" />
+          <ellipse cx="112" cy="38" rx="15" ry="8.5" transform="rotate(-5 112 38)" />
+          <ellipse cx="145" cy="48" rx="13" ry="7.5" transform="rotate(20 145 48)" />
+          <ellipse cx="178" cy="42" rx="14" ry="8" transform="rotate(-15 178 42)" />
+          <ellipse cx="208" cy="32" rx="12" ry="7" transform="rotate(10 208 32)" />
+        </g>
+        <g fill="#9CAF88" fillOpacity="0.55">
+          <circle cx="35" cy="10" r="3" />
+          <circle cx="95" cy="15" r="2.5" />
+          <circle cx="160" cy="22" r="3" />
+        </g>
+      </svg>
+
       <div className="relative flex flex-col items-center text-center px-6">
-        {/* buquê floral */}
-        <svg width="140" height="90" viewBox="0 0 140 90" fill="none" className="opacity-90">
-          <g stroke="#EDE7D6" strokeOpacity="0.7" strokeWidth="1.2" strokeLinecap="round">
-            <path d="M70 88C68 62 60 42 45 20" />
-            <path d="M70 88C72 58 78 38 90 15" />
-            <path d="M70 88C69 52 65 32 58 10" />
-            <path d="M70 88C71 58 76 40 95 30" />
-          </g>
-          <g fill="#F5F1E6">
-            <circle cx="45" cy="18" r="3" />
-            <circle cx="52" cy="12" r="2.4" />
-            <circle cx="40" cy="10" r="2" />
-            <circle cx="90" cy="13" r="3" />
-            <circle cx="97" cy="18" r="2.2" />
-            <circle cx="85" cy="8" r="2" />
-            <circle cx="58" cy="8" r="2.6" />
-            <circle cx="63" cy="4" r="2" />
-            <circle cx="95" cy="28" r="2.4" />
-            <circle cx="100" cy="24" r="2" />
-          </g>
-        </svg>
+        <p
+          className="text-xs tracking-[0.35em] uppercase"
+          style={{ color: "#9C7C45" }}
+        >
+          Casamento
+        </p>
 
-        {/* fita dourada atrás do selo */}
-        <div className="relative mt-2 flex items-center justify-center">
-          <div className="absolute left-1/2 top-1/2 h-px w-[220px] -translate-x-1/2 -translate-y-1/2 bg-gold/50" />
+        <h1
+          className="mt-2 text-6xl md:text-7xl"
+          style={{ fontFamily: "'Alex Brush', cursive", color: "#5B6B4E" }}
+        >
+          {WEDDING.couple}
+        </h1>
 
+        {/* envelope */}
+        <div className="relative mt-10 h-[190px] w-[270px] md:h-[220px] md:w-[310px]">
           <button
             ref={envelopeRef}
             onClick={handleEnter}
             aria-label="Abrir convite"
             title="Abrir convite"
-            className="relative flex h-[130px] w-[130px] items-center justify-center rounded-full"
+            className="absolute inset-0 overflow-hidden rounded-[10px]"
             style={{
-              background:
-                "radial-gradient(circle at 35% 30%, #D8B978, #C6A769 45%, #9C7C45 100%)",
-              boxShadow:
-                "0 10px 30px rgba(0,0,0,0.45), inset 0 2px 4px rgba(255,255,255,0.35), inset 0 -6px 10px rgba(0,0,0,0.35)",
+              background: "#6E7C55",
+              boxShadow: "0 18px 40px rgba(0,0,0,0.2)",
             }}
           >
             <div
-              className="h-[100px] w-[100px] rounded-full border border-black/10"
+              className="absolute inset-x-0 top-0 h-[46%] origin-top"
+              style={{
+                background: "#5D6A47",
+                clipPath: "polygon(0 0, 100% 0, 50% 100%)",
+              }}
+            />
+            <svg className="absolute inset-0 h-full w-full" viewBox="0 0 310 220" fill="none">
+              <path
+                d="M0 0L155 101L310 0"
+                stroke="rgba(0,0,0,0.22)"
+                strokeWidth="2"
+              />
+            </svg>
+
+            <div
+              className="absolute left-1/2 top-[42%] h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full"
               style={{
                 background:
-                  "radial-gradient(circle at 40% 35%, #C9AC72, #A98A52 60%, #8A6D3E 100%)",
+                  "radial-gradient(circle at 35% 30%, #D8B978, #C6A769 45%, #9C7C45 100%)",
+                boxShadow:
+                  "0 6px 14px rgba(0,0,0,0.35), inset 0 2px 3px rgba(255,255,255,0.35)",
               }}
             />
           </button>
         </div>
 
-        {/* monograma */}
-        <div
-          className="mt-8 flex items-baseline gap-3"
-          style={{ fontFamily: "Playfair Display, serif", color: "#D9BE85" }}
-        >
-          <span className="text-5xl md:text-6xl">{initials[0]}</span>
-          <span className="text-2xl">&amp;</span>
-          <span className="text-5xl md:text-6xl">{initials[1]}</span>
-        </div>
-
-        <p ref={hintRef} className="mt-6 text-sm tracking-wide" style={{ color: "#CBD1C4" }}>
-          Toque no lacre para abrir o convite
+        <p ref={hintRef} className="mt-6 text-sm" style={{ color: "#7C7568" }}>
+          Clique no envelope para abrir
         </p>
       </div>
     </div>
