@@ -5,7 +5,6 @@ import WeddingInfo from "../components/sections/WeddingInfo";
 import Gallery from "../components/sections/Gallery";
 
 import GiftList from "../components/sections/GiftList";
-import DressCode from "../components/sections/DressCode";
 import FinalMessage from "../components/sections/FinalMessage";
 import RSVPWhatsApp from "../components/sections/RSVPWhatsApp";
 
@@ -32,15 +31,12 @@ export default function Home() {
       {/* 4) bloco sálvia com alianças + infos + versículo */}
       <WeddingInfo />
 
-      {/* 5) blocos: presentes, traje, mensagem */}
+      {/* 5) blocos: presentes, mensagem */}
       <div className="mx-auto max-w-[1100px] px-5">
         <div className="py-16 md:py-20 space-y-10">
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2">
             <div data-animate className="md:col-span-1">
               <GiftList />
-            </div>
-            <div data-animate className="md:col-span-1">
-              <DressCode />
             </div>
             <div data-animate className="md:col-span-1">
               <FinalMessage />

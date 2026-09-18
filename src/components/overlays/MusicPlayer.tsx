@@ -28,10 +28,31 @@ export default function MusicPlayer({ autoPlay }: Props) {
 
       // 🎹 FADE IN SUAVE
       sound.fade(sound.volume(), 0.35, 1500);
-    } else {
-      // 🎹 FADE OUT SUAVE
-      sound.fade(sound.volume(), 0, 800);
+      return;
     }
+
+    // 🎹 FADE OUT SUAVE, depois pausa de fato (senão o áudio continua
+    // tocando silenciosamente em segundo plano no mobile)
+    sound.fade(sound.volume(), 0, 800);
+    const timer = setTimeout(() => sound.pause(), 800);
+    return () => clearTimeout(timer);
+  }, [on, sound]);
+
+  // pausa quando a aba/app vai para segundo plano e retoma ao voltar,
+  // se o usuário não tiver desligado manualmente
+  useEffect(() => {
+    function handleVisibilityChange() {
+      if (document.hidden) {
+        sound.pause();
+      } else if (on) {
+        sound.play();
+        sound.fade(sound.volume(), 0.35, 400);
+      }
+    }
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () =>
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
   }, [on, sound]);
 
   return (

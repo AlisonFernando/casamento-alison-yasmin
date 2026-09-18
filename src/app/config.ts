@@ -14,4 +14,10 @@ export const WEDDING = {
     text: "O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha. Tudo sofre, tudo crê, tudo espera, tudo suporta.",
     ref: "1 Coríntios 13:4–7",
   },
+  pix: {
+    key: "3b7af756-7994-47fb-8b13-f33404eb5bc8",
+    name: "Alison Fernando Teobaldo Silva",
+    city: "Viradouro SP",
+    bank: "Nubank",
+  },
 } as const;
