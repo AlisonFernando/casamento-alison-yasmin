@@ -58,7 +58,7 @@ export const GIFTS: GiftItem[] = [
     id: "chaleira",
     name: "Chaleira",
     description: "Para preparar aquele chá ou café quentinho.",
-    price: 50,
+    price: 80,
     quantity: 1,
   },
   {
@@ -72,7 +72,7 @@ export const GIFTS: GiftItem[] = [
     id: "garrafa-cafe",
     name: "Garrafa de café",
     description: "Pra manter o café quentinho por mais tempo.",
-    price: 100,
+    price: 50,
     quantity: 1,
   },
   {
