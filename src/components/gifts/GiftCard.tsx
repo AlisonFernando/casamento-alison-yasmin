@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { QRCodeCanvas } from "qrcode.react";
 import type { GiftItem } from "../../app/gifts";
 import { WEDDING } from "../../app/config";
-import { buildWhatsAppLink } from "../../app/links";
 import { confirmGiftTaken } from "../../app/giftClaims";
 import { buildPixPayload, formatBRL } from "../../app/pix";
 
@@ -56,10 +55,6 @@ export default function GiftCard({ gift, taken }: Props) {
     }
     setOpen(false);
   }
-
-  const whatsappMessage = gift.customAmount
-    ? `Olá! Vou presentear ${WEDDING.couple} com ${formatBRL(amount)} para a ${gift.name}.`
-    : `Olá! Vou presentear ${WEDDING.couple} com: ${gift.name}.`;
 
   return (
     <div className="min-w-0 rounded-xl2 bg-white/45 backdrop-blur border border-white/40 p-6 flex flex-col">
@@ -161,17 +156,6 @@ export default function GiftCard({ gift, taken }: Props) {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {!soldOut && (
-        <a
-          href={buildWhatsAppLink(whatsappMessage)}
-          target="_blank"
-          rel="noreferrer"
-          className="mt-3 inline-flex justify-center rounded-full px-5 py-2 text-xs text-ink2 border border-white/50 hover:text-ink hover:border-white/70 transition"
-        >
-          Avisar no WhatsApp que vou presentear
-        </a>
-      )}
     </div>
   );
 }
