@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Splash from "./components/Splash";
@@ -9,7 +9,10 @@ import FloatingRSVP from "./components/overlays/FloatingRSVP";
 import ScrollToTop from "./components/overlays/ScrollToTop";
 
 import Home from "./pages/Home";
-import GiftListPage from "./pages/GiftListPage";
+
+// Lazy: essa página puxa o SDK do Firebase, que não deve pesar no convite
+// principal pra quem nunca visita a lista de presentes.
+const GiftListPage = lazy(() => import("./pages/GiftListPage"));
 
 export default function App() {
   const [entered, setEntered] = useState<boolean>(() => {
@@ -45,7 +48,14 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/presentes" element={<GiftListPage />} />
+        <Route
+          path="/presentes"
+          element={
+            <Suspense fallback={null}>
+              <GiftListPage />
+            </Suspense>
+          }
+        />
       </Routes>
     </>
   );

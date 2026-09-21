@@ -4,22 +4,26 @@ import { QRCodeCanvas } from "qrcode.react";
 import type { GiftItem } from "../../app/gifts";
 import { WEDDING } from "../../app/config";
 import { buildWhatsAppLink } from "../../app/links";
+import { confirmGiftTaken } from "../../app/giftClaims";
 import { buildPixPayload, formatBRL } from "../../app/pix";
 
 type Props = {
   gift: GiftItem;
+  taken: boolean;
 };
 
-export default function GiftCard({ gift }: Props) {
+export default function GiftCard({ gift, taken }: Props) {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [confirming, setConfirming] = useState(false);
+  const [raceMessage, setRaceMessage] = useState(false);
   const [customValue, setCustomValue] = useState(
     gift.minPrice ? String(gift.minPrice) : "50",
   );
 
   const minAmount = gift.minPrice ?? 1;
   const amount = gift.customAmount ? Number(customValue) || 0 : gift.price ?? 0;
-  const soldOut = gift.quantity !== undefined && gift.quantity <= 0;
+  const soldOut = !gift.customAmount && taken;
 
   const pixPayload = buildPixPayload({
     key: WEDDING.pix.key,
@@ -38,6 +42,19 @@ export default function GiftCard({ gift }: Props) {
       // navegador sem suporte a clipboard — o código ainda pode ser
       // selecionado manualmente na caixa exibida
     }
+  }
+
+  async function handleConfirmPaid() {
+    setConfirming(true);
+    setRaceMessage(false);
+    const result = await confirmGiftTaken(gift.id);
+    setConfirming(false);
+    if (!result.ok) {
+      setRaceMessage(true);
+      setOpen(false);
+      return;
+    }
+    setOpen(false);
   }
 
   const whatsappMessage = gift.customAmount
@@ -63,7 +80,7 @@ export default function GiftCard({ gift }: Props) {
         <p className="mt-3 text-sm text-ink">{formatBRL(gift.price)}</p>
       )}
 
-      {gift.customAmount && !soldOut && (
+      {gift.customAmount && (
         <label className="mt-4 flex items-center gap-2 text-sm text-ink">
           R$
           <input
@@ -79,6 +96,13 @@ export default function GiftCard({ gift }: Props) {
       {gift.customAmount && amount > 0 && amount < minAmount && (
         <p className="mt-1 text-xs text-red-500">
           Valor mínimo: {formatBRL(minAmount)}
+        </p>
+      )}
+
+      {raceMessage && (
+        <p className="mt-4 text-sm text-red-500">
+          Alguém confirmou esse presente um instante antes de você. Escolha
+          outro item — obrigado pelo carinho!
         </p>
       )}
 
@@ -123,6 +147,16 @@ export default function GiftCard({ gift }: Props) {
               >
                 {copied ? "Código copiado!" : pixPayload}
               </button>
+              {!gift.customAmount && (
+                <button
+                  type="button"
+                  onClick={handleConfirmPaid}
+                  disabled={confirming}
+                  className="w-full rounded-full bg-ink/90 px-4 py-2 text-xs text-white transition hover:bg-ink disabled:opacity-50"
+                >
+                  {confirming ? "Confirmando…" : "Já paguei, marcar como presenteado"}
+                </button>
+              )}
             </div>
           </motion.div>
         )}

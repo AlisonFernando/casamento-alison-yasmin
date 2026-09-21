@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 import { GIFTS } from "../app/gifts";
 import { WEDDING } from "../app/config";
 import { buildWhatsAppLink } from "../app/links";
+import { useTakenGifts } from "../app/giftClaims";
 import GiftCard from "../components/gifts/GiftCard";
 
 export default function GiftListPage() {
+  const taken = useTakenGifts();
+
   return (
     <main className="min-h-screen bg-grain">
       <div className="mx-auto max-w-[1100px] px-5 py-16 md:py-20">
@@ -50,7 +53,7 @@ export default function GiftListPage() {
 
         <div className="mt-10 grid min-w-0 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {GIFTS.map((gift) => (
-            <GiftCard key={gift.id} gift={gift} />
+            <GiftCard key={gift.id} gift={gift} taken={!!taken[gift.id]} />
           ))}
         </div>
       </div>
