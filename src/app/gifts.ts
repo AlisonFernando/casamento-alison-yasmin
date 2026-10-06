@@ -53,19 +53,19 @@ export const GIFTS: GiftItem[] = [
     id: "filtro-agua",
     name: "Filtro de água",
     description: "Água fresca e filtrada todos os dias em casa.",
-    price: 300,
+    price: 350,
   },
   {
     id: "garrafa-cafe",
     name: "Garrafa de café",
     description: "Pra manter o café quentinho por mais tempo.",
-    price: 50,
+    price: 85,
   },
   {
     id: "jogo-pratos",
-    name: "Jogo de pratos",
+    name: "Jogo de pratos completos",
     description: "Pratos para as nossas refeições.",
-    price: 120,
+    price: 200,
   },
   {
     id: "talheres",
@@ -79,6 +79,6 @@ export const GIFTS: GiftItem[] = [
     description:
       "Ajude a tornar nossa primeira viagem de casados inesquecível. Escolha o valor que quiser presentear.",
     customAmount: true,
-    minPrice: 100,
+    minPrice: 150,
   },
 ];
