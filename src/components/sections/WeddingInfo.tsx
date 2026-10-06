@@ -1,5 +1,6 @@
 import { WEDDING } from "../../app/config";
 import { buildMapsLink } from "../../app/links";
+import RingsMark from "../rings/RingsMark";
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -18,32 +19,7 @@ export default function WeddingInfo() {
           <div className="grid gap-10 md:grid-cols-2 md:items-center">
             {/* ESQUERDA — textos estilo editorial */}
             <div className="text-center md:text-left">
-              {/* “Desenho” (substitui depois por uma arte real se quiser) */}
-              <div className="mx-auto md:mx-0 w-20 opacity-70">
-                <svg viewBox="0 0 120 60" fill="none">
-                  <path
-                    d="M12 42c16-20 34-30 52-28 16 2 27 12 44 30"
-                    stroke="#2F3E34"
-                    strokeOpacity="0.55"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M18 40c8-10 18-16 30-18"
-                    stroke="#2F3E34"
-                    strokeOpacity="0.35"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M46 26c2 6 2 14 0 24"
-                    stroke="#2F3E34"
-                    strokeOpacity="0.25"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </div>
+              <RingsMark className="mx-auto md:mx-0 h-10 w-20" />
 
               <p className="mt-6 text-xs tracking-[0.22em] text-ink2 uppercase">
                 O grande dia

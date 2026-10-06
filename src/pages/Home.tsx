@@ -7,10 +7,12 @@ import Gallery from "../components/sections/Gallery";
 import GiftList from "../components/sections/GiftList";
 import FinalMessage from "../components/sections/FinalMessage";
 import RSVPWhatsApp from "../components/sections/RSVPWhatsApp";
+import ScrollRings from "../components/rings/ScrollRings";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-grain">
+      <ScrollRings />
       {/* 1) HERO imagem única (altura menor, igual exemplo) */}
       <HeroBanner />
 
