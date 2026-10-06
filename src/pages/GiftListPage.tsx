@@ -3,10 +3,12 @@ import { GIFTS } from "../app/gifts";
 import { WEDDING } from "../app/config";
 import { buildWhatsAppLink } from "../app/links";
 import { useTakenGifts } from "../app/giftClaims";
+import { formatBRL } from "../app/pix";
 import GiftCard from "../components/gifts/GiftCard";
 
 export default function GiftListPage() {
   const taken = useTakenGifts();
+  const honeymoonGift = GIFTS.find((gift) => gift.customAmount);
 
   return (
     <main className="min-h-screen bg-grain">
@@ -33,12 +35,14 @@ export default function GiftListPage() {
             de organização. Caso queira presentear com algo que não está na
             lista, entre em contato com os noivos.
           </p>
-          <p className="mt-2">
-            Se preferir um valor livre em vez de um presente específico, tem a
-            opção{" "}
-            <strong className="text-ink">Cota lua de mel</strong>, com valor
-            mínimo de R$ 100.
-          </p>
+          {honeymoonGift && (
+            <p className="mt-2">
+              Se preferir um valor livre em vez de um presente específico, tem
+              a opção <strong className="text-ink">{honeymoonGift.name}</strong>,
+              com valor mínimo de{" "}
+              {formatBRL(honeymoonGift.minPrice ?? 0)}.
+            </p>
+          )}
           <a
             href={buildWhatsAppLink(
               `Olá! Quero falar sobre um presente pro casamento de ${WEDDING.couple}.`,
