@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { GIFTS } from "../app/gifts";
+import { GIFT_CATEGORIES, GIFTS } from "../app/gifts";
 import { WEDDING } from "../app/config";
 import { buildWhatsAppLink } from "../app/links";
 import { useTakenGifts } from "../app/giftClaims";
@@ -55,11 +55,28 @@ export default function GiftListPage() {
           </a>
         </div>
 
-        <div className="mt-10 grid min-w-0 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {GIFTS.map((gift) => (
-            <GiftCard key={gift.id} gift={gift} taken={!!taken[gift.id]} />
-          ))}
-        </div>
+        {GIFT_CATEGORIES.map((category) => (
+          <section
+            key={category.id}
+            aria-labelledby={`categoria-${category.id}`}
+            className="mt-14"
+          >
+            <h2
+              id={`categoria-${category.id}`}
+              className="text-2xl md:text-3xl"
+              style={{ fontFamily: "Playfair Display, serif" }}
+            >
+              {category.title}
+            </h2>
+            <p className="mt-2 text-sm text-ink2">{category.subtitle}</p>
+
+            <div className="mt-6 grid min-w-0 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {GIFTS.filter((gift) => gift.category === category.id).map((gift) => (
+                <GiftCard key={gift.id} gift={gift} taken={!!taken[gift.id]} />
+              ))}
+            </div>
+          </section>
+        ))}
       </div>
     </main>
   );

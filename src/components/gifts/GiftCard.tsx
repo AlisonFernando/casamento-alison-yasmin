@@ -22,7 +22,8 @@ export default function GiftCard({ gift, taken }: Props) {
 
   const minAmount = gift.minPrice ?? 1;
   const amount = gift.customAmount ? Number(customValue) || 0 : gift.price ?? 0;
-  const soldOut = !gift.customAmount && taken;
+  const tracksClaims = !gift.customAmount && !gift.repeatable;
+  const soldOut = tracksClaims && taken;
 
   const pixPayload = buildPixPayload({
     key: WEDDING.pix.key,
@@ -59,9 +60,9 @@ export default function GiftCard({ gift, taken }: Props) {
   return (
     <div className="min-w-0 rounded-xl2 bg-white/45 backdrop-blur border border-white/40 p-6 flex flex-col">
       <div className="flex items-start justify-between gap-2">
-        <h2 className="text-xl" style={{ fontFamily: "Playfair Display, serif" }}>
+        <h3 className="text-xl" style={{ fontFamily: "Playfair Display, serif" }}>
           {gift.name}
-        </h2>
+        </h3>
         {soldOut && (
           <span className="shrink-0 rounded-full bg-ink/10 px-2.5 py-1 text-[11px] uppercase tracking-wide text-ink2">
             Esgotado
@@ -142,7 +143,7 @@ export default function GiftCard({ gift, taken }: Props) {
               >
                 {copied ? "Código copiado!" : pixPayload}
               </button>
-              {!gift.customAmount && (
+              {tracksClaims && (
                 <button
                   type="button"
                   onClick={handleConfirmPaid}
