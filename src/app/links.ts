@@ -7,6 +7,5 @@ export function buildWhatsAppLink(message: string) {
 }
 
 export function buildMapsLink() {
-  const q = encodeURIComponent(`${WEDDING.venue}, ${WEDDING.city}`);
-  return `https://www.google.com/maps/search/?api=1&query=${q}`;
+  return WEDDING.mapsUrl;
 }

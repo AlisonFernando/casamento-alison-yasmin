@@ -1,11 +1,12 @@
 export const WEDDING = {
   couple: "Alison & Yasmin",
-  dateISO: "2027-06-12T10:30:00-03:00",
+  dateISO: "2027-06-12T16:30:00-03:00",
   dateLabel: "12 de Junho de 2027",
-  timeLabel: "10:30",
-  venue: "R. dos Antúrios, nº 63 – Jardim Florida",
-  city: "Sales Oliveira – SP",
-  whatsappPhoneE164: "5517996311022",
+  timeLabel: "16:30",
+  venue: "Grupo Giro Certo",
+  city: "Viradouro – SP",
+  whatsappPhoneE164: "5517996470083",
+  mapsUrl: "https://maps.app.goo.gl/uaSF8nHL88W88BeJ9",
   verseHero: {
     text: "Assim, eles já não são dois, mas sim uma só carne. Portanto, o que Deus uniu, ninguém separe.",
     ref: "Mateus 19:6",
