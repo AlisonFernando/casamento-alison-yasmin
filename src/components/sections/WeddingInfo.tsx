@@ -62,15 +62,17 @@ export default function WeddingInfo() {
               <p className="mt-4 text-sm text-ink2">— {WEDDING.verseHero.ref}</p>
             </div>
 
-            {/* DIREITA — imagem das alianças com moldura */}
+            {/* DIREITA — foto das mãos com as alianças, com moldura */}
             <div className="flex justify-center md:justify-end">
               <div className="w-full max-w-[460px]">
                 <div className=" border border-white/50 p-3 md:p-4">
                   <div className="overflow-hidden ">
                     <img
-                      src={`${BASE}images/gallery/aliancas.png`}
-                      alt="Alianças"
-                      className="h-[280px] md:h-[360px] w-full object-cover"
+                      src={`${BASE}images/gallery/maos-aliancas.webp`}
+                      alt="Mãos de Alison e Yasmin entrelaçadas, mostrando as alianças"
+                      width={1200}
+                      height={800}
+                      className="h-[280px] md:h-[360px] w-full object-cover object-[center_40%]"
                       loading="lazy"
                     />
                   </div>
