@@ -307,6 +307,14 @@ export const GIFTS: GiftItem[] = [
     price: 600,
     repeatable: true,
   },
+  {
+    id: "aluguel-carro-viagem",
+    category: "lua-de-mel",
+    name: "Aluguel do carro para a viagem",
+    description: "Pra subir a serra até Monte Verde com as malas da Yasmin.",
+    price: 200,
+    repeatable: true,
+  },
 
   // Com bom humor
   {
